@@ -17,6 +17,8 @@ data_string = os.getenv("ACC")
 acl = data_string.split(',')
 
 access_list = acl
+print("acl", data_string)
+print("list", access_list)
 
 
 @bot.message_handler(commands=['start'])
