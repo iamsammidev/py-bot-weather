@@ -8,11 +8,14 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-
+# BOT
 bot_token = os.getenv("BOTTOKEN")
-
 bot = telebot.TeleBot(bot_token)
+
+# WEATHER
 weather_token = os.getenv("WTOKEN")
+
+# ACCESS LIST
 data_string = os.getenv("ACC", "")
 acl = []
 try:

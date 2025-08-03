@@ -1,0 +1,9 @@
+version: '3.8'
+# docker run --rm --name wbot_samir -v "$(pwd)/.env:/app/.env" --env-file .env w-bot
+services:
+  wbot_samir:
+    image: w-bot
+    volumes:
+      - "$(pwd)/.env:/app/.env"
+    env_file:
+      - .env
