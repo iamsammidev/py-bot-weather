@@ -4,6 +4,6 @@ services:
   wbot_samir:
     image: w-bot
     volumes:
-      - "$(pwd)/.env:/app/.env"
+      - ".env:/app/.env"
     env_file:
       - .env
