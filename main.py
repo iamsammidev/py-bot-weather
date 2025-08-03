@@ -13,8 +13,13 @@ bot_token = os.getenv("BOTTOKEN")
 
 bot = telebot.TeleBot(bot_token)
 weather_token = os.getenv("WTOKEN")
-data_string = os.getenv("ACC")
-acl = data_string.split(',')
+data_string = os.getenv("ACC", "")
+acl = []
+try:
+    acl = [int(x) for x in data_string.split(',') if x.strip()]
+except ValueError as e:
+    print("Invalid value in ACC:", e)
+    acl = []
 
 access_list = acl
 print("acl", data_string)
