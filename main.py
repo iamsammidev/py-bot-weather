@@ -4,6 +4,13 @@ import json
 import os
 from dotenv import load_dotenv
 
+import random
+
+foo_sunny = ['sunny.jpg', 'snowy.jpg', 'sun.png', 'rainy.jpg']
+foo_sun = ['sun.png']
+
+
+
 # Load environment variables from .env file
 load_dotenv()
 
@@ -58,9 +65,9 @@ def get_weather(message):
 
         # image = 'sunny.jpg' if temp > 5.0 else 'sun.png'
         if temp > 5.0:
-            image = 'sunny.jpg'
+            image = random.choice(foo_sunny)
         else:
-            image = 'sun.png'
+            image = random.choice(foo_sun)
 
         file = open('./' + image, 'rb')
         bot.send_photo(message.chat.id, file)
