@@ -34,4 +34,12 @@ def summa(message):
         bot.register_next_step_handler(message, summa)
 
 
+@bot.callback_query_handler(func=lambda call: True)
+def callback(call):
+    values = call.data.upper().split('/')
+    res = currency.convert(amount, values[0], values[1])
+    bot.send_message(call.message.chat.id, f'Получается: {res}. Можете заново вести сумму')
+    bot.register_next_step_handler(call.message, summa)
+
+
 bot.polling(none_stop=True)
