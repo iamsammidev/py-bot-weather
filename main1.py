@@ -15,9 +15,14 @@ def start(message):
 
 def summa(message):
     global amount
-    amount = message.text.strip()
+    try:
+        amount = int(message.text.strip())
+    except ValueError:
+        bot.send_message(message.chat.id, 'Неверный формат. Впишите сумму')
+        bot.register_next_step_handler(message, summa)
+        return
 
-    markup = types.InlineKeyboardMarkup()
+    markup = types.InlineKeyboardMarkup(row_width=2)
     btn1 = types.InlineKeyboardButton('USD/EUR', callback_data='usd/eur')
     btn2 = types.InlineKeyboardButton('EUR/USD', callback_data='eur/usd')
     btn3 = types.InlineKeyboardButton('USD/GBP', callback_data='usd/gbp')
