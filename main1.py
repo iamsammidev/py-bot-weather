@@ -38,7 +38,7 @@ def summa(message):
 def callback(call):
     values = call.data.upper().split('/')
     res = currency.convert(amount, values[0], values[1])
-    bot.send_message(call.message.chat.id, f'Получается: {res}. Можете заново вести сумму')
+    bot.send_message(call.message.chat.id, f'Получается: {round(res, 2)}. Можете заново вести сумму')
     bot.register_next_step_handler(call.message, summa)
 
 
