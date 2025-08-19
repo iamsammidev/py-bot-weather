@@ -47,10 +47,14 @@ def callback(call):
 
 
 def my_currency(message):
-    values = message.text.upper().split('/')
-    res = currency.convert(amount, values[0], values[1])
-    bot.send_message(message.chat.id, f'Получается: {round(res, 2)}. Можете заново вести сумму')
-    bot.register_next_step_handler(message, summa)
+    try:
+        values = message.text.upper().split('/')
+        res = currency.convert(amount, values[0], values[1])
+        bot.send_message(message.chat.id, f'Получается: {round(res, 2)}. Можете заново вести сумму')
+        bot.register_next_step_handler(message, summa)
+    except Exception:
+        bot.send_message(message.chat.id, 'Что то не так. Впишите значение заново')
+        bot.register_next_step_handler(message, my_currency)
 
 
 bot.polling(none_stop=True)
